@@ -236,6 +236,20 @@ public class BeastLottie extends AndroidNonvisibleComponent implements Animator.
         return this.animationView.getRepeatCount();
     }
 
+    @SimpleProperty(description = "Returns infinite repeat count.")
+    public int RepeatModeInfinite(){
+        return ValueAnimator.INFINITE;
+    }
+
+    @SimpleProperty(description = "Returns reverse repeat count.")
+    public int RepeatModeReverse(){
+        return ValueAnimator.REVERSE;
+    }
+
+    @SimpleProperty(description = "Returns reverse repeat count.")
+    public int RepeatModeRestart(){
+        return ValueAnimator.RESTART;
+    }
     @SimpleProperty(description = "Returns if the Lottie Animation View is animating.")
     public boolean IsAnimating() {
         return this.animationView.isAnimating();
@@ -398,10 +412,7 @@ public class BeastLottie extends AndroidNonvisibleComponent implements Animator.
     public void Layout(AndroidViewComponent layout) {
         ViewGroup viewGroup = (ViewGroup) layout.getView();
         viewGroup.removeAllViews();
-        ViewGroup parent = (ViewGroup) this.animationView.getParent();
-        if (parent != null) {
-            parent.removeView(animationView);
-        }
+        viewGroup.addView(animationView);
     }
 
     @SimpleFunction(description = "Initializes Lottie for usage in the app.")
@@ -514,7 +525,7 @@ public class BeastLottie extends AndroidNonvisibleComponent implements Animator.
 
     @SimpleEvent(description = "Event triggered when an error occurred.")
     public void ErrorOccurred(String error, String log) {
-        EventDispatcher.dispatchEvent(this, "ErrorOccurred", log);
+        EventDispatcher.dispatchEvent(this, "ErrorOccurred", error, log);
     }
 
     @Override

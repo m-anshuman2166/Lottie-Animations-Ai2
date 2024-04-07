@@ -22,9 +22,6 @@ build:
     enable: false
     desugar_deps: false
 
-  kotlin:
-    enable: true
-
 assets:
   # Extension icon. This can be a URL or a local image in 'assets' folder.
   icon: icon.png
