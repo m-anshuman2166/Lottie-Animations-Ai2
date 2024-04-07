@@ -1,2 +1,2 @@
-# Lottie-Animations-Ai2
-An extension to use Lottie animations in MIT Appinventor.
+## BeastLottie
+An App Inventor 2 extension for showing Lottie animations in your app.
